@@ -1,0 +1,71 @@
+<script>
+    $(document).ready(function() {
+        set_world_map()
+    });
+
+    function set_world_map(){
+        var map = L.map('map').setView([0,0],1)
+
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=iokfUVv9rgeWKrI9Vng4', 
+        { 
+            attribution: `<a href="https://www.maptiler.com/copyright/" 
+                        target="_blank">&copy; MapTiler</a> 
+                        
+                        <a href="https://www.openstreetmap.org/copyright" 
+                        target="_blank">
+                        &copy; OpenStreetMap contributors
+                        </a>`
+        }).addTo(map)
+    
+
+        map.on('click', function(event){
+            var latitude = change_decimal_place(String(event.latlng.lat));
+            var longitude = change_decimal_place(String(event.latlng.lng));
+            get_weather_forecast(event, map, latitude, longitude)
+        });
+    }
+
+
+    function change_decimal_place(string_var){
+        return parseFloat(string_var).toFixed(2)
+    }
+
+
+    function add_pop_up_message_on_map(event, map, message){
+        var popup = L.popup()
+        .setLatLng(event.latlng)
+        .setContent(message)
+        .openOn(map);
+    }
+
+
+    function get_weather_forecast(event, map, latitude, longitude){
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'get_weather_by_coordinates' %}",
+            data: {
+                "latitude": latitude, 
+                "longitude": longitude
+            },
+            success: function (response) {
+                if (response.status == 200){
+                    add_pop_up_message_on_map(event, map, response.data.location_name)
+                    display_weather_forecast(response.data)
+                }else{
+                    alert(response.message)
+                }
+            }
+        })
+    }
+
+
+    function display_weather_forecast(data){
+        $("#data_location_name").text(data.location_name);
+        $("#data_date_time").text(data.date_time);
+        $("#data_temperature").text(data.temperature);
+        $("#data_wind").text(data.wind);
+        $("#data_humidity").text(data.humidity);
+        $("#data_weather_description").text(data.weather_description);
+        
+    }
+</script>
