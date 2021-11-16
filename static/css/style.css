@@ -490,11 +490,6 @@
       height: auto;
     }
   
-    body {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  
     .tm-site-title {
       font-size: 1.4rem;
       margin-left: 7px;
@@ -517,9 +512,11 @@
     }
   }
 
-
   #map {
     width: 100%;
-    height: 55vh;
+    height: 60vh;
   }
   
+  body {
+    font-size: 15px;
+  }
