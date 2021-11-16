@@ -1,4 +1,4 @@
-html {
+  html {  
     font-size: 17px;
   }
   
@@ -515,5 +515,11 @@ html {
     .navbar-collapse {
       top: 107px;
     }
+  }
+
+
+  #map {
+    width: 100%;
+    height: 100vh;
   }
   
