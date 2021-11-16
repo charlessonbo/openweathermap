@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
-{% block content %} 
-  <div id="map"></div>
+{% block content %}
+<div class="row">
+  <div class="col-lg-3 tm-md-3 tm-col">
+    {% include "weather/weatherforecast.html" %}
+  </div>
+
+  <div class="col-lg-9 tm-md-9 tm-col">
+    {% include "weather/worldmap.html" %}
+  </div>
+</div>
 {% endblock %}
