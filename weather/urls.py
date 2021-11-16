@@ -6,7 +6,7 @@ urlpatterns = [
          views.index, 
          name='index'),
 
-    path('/get/location/weather',
+    path('get/location/weather',
          views.get_weather_by_coordinates, 
          name='get_weather_by_coordinates')  
 ]

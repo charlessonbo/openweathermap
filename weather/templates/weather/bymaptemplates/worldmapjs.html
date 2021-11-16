@@ -19,8 +19,8 @@
     
 
         map.on('click', function(event){
-            var latitude = to_two_decimal(String(event.latlng.lat)),
-            longitude = to_two_decimal(String(event.latlng.lng));
+            var latitude = String(event.latlng.lat),
+            longitude = String(event.latlng.lng);
 
             get_weather_forecast(latitude,longitude)
 
