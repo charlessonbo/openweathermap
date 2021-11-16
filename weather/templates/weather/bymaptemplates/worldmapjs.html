@@ -19,21 +19,14 @@
     
 
         map.on('click', function(event){
-            var latitude = String(event.latlng.lat),
-            longitude = String(event.latlng.lng);
-
-            get_weather_forecast(latitude,longitude)
-
-
-            var message = "Latitude:"+ latitude + " " + "Longitude:"+ longitude
-            add_pop_up_message_on_map(event, map, message)
-    
-    
+            var latitude = change_decimal_place(String(event.latlng.lat));
+            var longitude = change_decimal_place(String(event.latlng.lng));
+            get_weather_forecast(event, map, latitude, longitude)
         });
     }
 
 
-    function to_two_decimal(string_var){
+    function change_decimal_place(string_var){
         return parseFloat(string_var).toFixed(2)
     }
 
@@ -46,7 +39,7 @@
     }
 
 
-    function get_weather_forecast(latitude,longitude){
+    function get_weather_forecast(event, map, latitude, longitude){
         $.ajax({
             type: 'GET',
             url: "{% url 'get_weather_by_coordinates' %}",
@@ -55,8 +48,24 @@
                 "longitude": longitude
             },
             success: function (response) {
-                console.log(response)
+                if (response.status == 200){
+                    add_pop_up_message_on_map(event, map, response.data.location_name)
+                    display_weather_forecast(response.data)
+                }else{
+                    alert(response.message)
+                }
             }
         })
+    }
+
+
+    function display_weather_forecast(data){
+        $("#data_location_name").text(data.location_name);
+        $("#data_date_time").text(data.date_time);
+        $("#data_temperature").text(data.temperature);
+        $("#data_wind").text(data.wind);
+        $("#data_humidity").text(data.humidity);
+        $("#data_weather_description").text(data.weather_description);
+        
     }
 </script>

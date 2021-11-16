@@ -133,5 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 OPEN_WEATHER_MAP_API_KEY = '849777b4516158feb58a9f76ed09d070'
-OPEN_WEATHER_MAP_API_BY_COORDINATES = 'http://api.openweathermap.org/data/2.5/weather'
+OPEN_WEATHER_MAP_API = 'http://api.openweathermap.org/data/2.5/weather'
 

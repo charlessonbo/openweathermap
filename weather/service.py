@@ -4,7 +4,7 @@ from datetime import datetime
 from django.conf import settings
 
 def weather_by_coordinates(latitude,longitude):
-    url= f"{settings.OPEN_WEATHER_MAP_API_BY_COORDINATES}?lat={latitude}&lon={longitude}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
+    url= f"{settings.OPEN_WEATHER_MAP_API}?lat={latitude}&lon={longitude}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
     response = requests.get(url)
     
     if response.status_code == 200:
@@ -14,22 +14,23 @@ def weather_by_coordinates(latitude,longitude):
 
 
 def generate_weather_forecast(data):
-    response = {}
+    response = { 'data':{} }
 
     temperature = ((data['main']['temp']) - 273.15)
     weather_description = data['weather'][0]['description']
     humidity = data['main']['humidity']
     wind = data['wind']['speed']
     location_name = data['name']
-    date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
+    date_time = datetime.now().strftime("%b %d %Y | %I:%M:%S %p")
 
-    response['temperature'] = "{:.2f}°C".format(temperature)
-    response['wind'] = f"{wind}'kmph"
-    response['humidity'] = f"{humidity}%"
-    response['weather_description'] = str(weather_description).title()
-    response['location_name'] = location_name
-    response['date_time'] = date_time
-
+    response['data']['temperature'] = "{:.2f}°C".format(temperature)
+    response['data']['wind'] = f"{wind} kmph"
+    response['data']['humidity'] = f"{humidity}%"
+    response['data']['weather_description'] = str(weather_description).title()
+    response['data']['location_name'] = location_name
+    response['data']['date_time'] = date_time
+    response['message'] = 'success'
+    response['status'] = 200
     return response
 
 
