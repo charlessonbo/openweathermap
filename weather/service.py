@@ -2,6 +2,7 @@ import requests
 import os
 from datetime import datetime
 from django.conf import settings
+from weatherapp.middleware import get_response
 
 def weather_by_coordinates(latitude,longitude):
     url= f"{settings.OPEN_WEATHER_MAP_API}?lat={latitude}&lon={longitude}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
@@ -31,18 +32,16 @@ def generate_weather_forecast(api_response):
     results['location_name'] = location_name
     results['date_time'] = date_time
 
-    return generate_api_response(results, 'success', api_response.status_code)
-
+    return get_response(
+               message='success',
+               result=results,
+               status_code=api_response.status_code
+    )
 
 def generate_error_message(api_response):
     data = api_response.json()
-    results = {}
-    return generate_api_response(results, data['message'], api_response.status_code)
-
-
-def generate_api_response(results,message,status_code):
-    response = {}
-    response['results'] = results
-    response['message'] = message
-    response['status_code'] = status_code
-    return response
+    return get_response(
+               message=data['message'],
+               result={},
+               status_code=api_response.status_code
+    )
