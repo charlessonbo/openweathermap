@@ -6,14 +6,15 @@ from django.conf import settings
 def weather_by_coordinates(latitude,longitude):
     url= f"{settings.OPEN_WEATHER_MAP_API}?lat={latitude}&lon={longitude}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
     response = requests.get(url)
-    
+
     if response.status_code == 200:
-        return generate_weather_forecast(response.json())
+        return generate_weather_forecast(response)
     else:
-        return generate_error_message(response.json())
+        return generate_error_message(response)
 
 
-def generate_weather_forecast(data):
+def generate_weather_forecast(api_response):
+    data = api_response.json()
     response = { 'data':{} }
 
     temperature = ((data['main']['temp']) - 273.15)
@@ -30,12 +31,13 @@ def generate_weather_forecast(data):
     response['data']['location_name'] = location_name
     response['data']['date_time'] = date_time
     response['message'] = 'success'
-    response['status'] = 200
+    response['status_code'] = api_response.status_code
     return response
 
 
-def generate_error_message(data):
+def generate_error_message(api_response):
+    data = api_response.json()
     response = {}
     response['message'] = data['message']
-    response['status'] = data['cod']
+    response['status_code'] = api_response.status_code
     return response

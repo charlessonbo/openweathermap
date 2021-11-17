@@ -48,7 +48,7 @@
                 "longitude": longitude
             },
             success: function (response) {
-                if (response.status == 200){
+                if (response.status_code == 200){
                     add_pop_up_message_on_map(event, map, response.data.location_name)
                     display_weather_forecast(response.data)
                 }else{
