@@ -8,13 +8,13 @@ from weatherapp.middleware import get_response, log_to_db
 def weather_by_coordinates(latitude,longitude):
     url= f"{settings.OPEN_WEATHER_MAP_API}?lat={latitude}&lon={longitude}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
     response = requests.get(url)
-    return generate_api_response(response, f"{latitude} + {longitude}")
+    return generate_api_response(response, f"latitude: {latitude} longitude: {longitude}")
 
 
 def weather_by_name(name):
     url= f"{settings.OPEN_WEATHER_MAP_API}?q={name}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
     response = requests.get(url)
-    return generate_api_response(response, name)
+    return generate_api_response(response, f"name {name}")
 
 
 def generate_api_response(response, input_data):
