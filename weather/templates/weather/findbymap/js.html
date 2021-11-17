@@ -6,6 +6,9 @@
 
 
     function on_page_load(){
+        $("#find_by_map_nav").removeClass("nav-link").addClass("nav-link active");
+
+
         $(".form :input").each(function(){
             $(this).addClass("form-control");
         });
@@ -75,6 +78,5 @@
         $("#data_wind").text(data.wind);
         $("#data_humidity").text(data.humidity);
         $("#data_weather_description").text(data.weather_description);
-        
     }
 </script>

@@ -43,16 +43,16 @@ def generate_weather_forecast(api_response):
     results['date_time'] = date_time
 
     return get_response(
-               message='success',
-               result=results,
-               status_code=api_response.status_code
+        message='success',
+        result=results,
+        status_code=api_response.status_code
     )
 
 
 def generate_error_message(api_response):
     data = api_response.json()
     return get_response(
-               message=data['message'],
-               result={},
-               status_code=api_response.status_code
+        message=data['message'],
+        result={},
+        status_code=api_response.status_code
     )
