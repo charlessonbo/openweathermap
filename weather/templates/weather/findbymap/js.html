@@ -1,7 +1,19 @@
 <script>
     $(document).ready(function() {
         set_world_map()
+        on_page_load()
     });
+
+
+    function on_page_load(){
+        $("#find_by_map_nav").removeClass("nav-link").addClass("nav-link active");
+
+
+        $(".form :input").each(function(){
+            $(this).addClass("form-control");
+        });
+    }
+
 
     function set_world_map(){
         var map = L.map('map').setView([0,0],1)
@@ -48,9 +60,9 @@
                 "longitude": longitude
             },
             success: function (response) {
-                if (response.status == 200){
-                    add_pop_up_message_on_map(event, map, response.data.location_name)
-                    display_weather_forecast(response.data)
+                if (response.status_code == "200"){
+                    add_pop_up_message_on_map(event, map, response.result.location_name)
+                    display_weather_forecast(response.result)
                 }else{
                     alert(response.message)
                 }
@@ -66,6 +78,5 @@
         $("#data_wind").text(data.wind);
         $("#data_humidity").text(data.humidity);
         $("#data_weather_description").text(data.weather_description);
-        
     }
 </script>
