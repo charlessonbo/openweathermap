@@ -1,6 +1,7 @@
 from django.utils.deprecation import MiddlewareMixin
 from django.http import JsonResponse
 from django.shortcuts import render
+import logging
 
 class ExceptionMiddleware(MiddlewareMixin):
 
@@ -22,3 +23,8 @@ def get_response(**kwargs):
         "result" : kwargs.get('result', None),
         "status_code" : kwargs.get('status_code', None),
     }
+
+
+def log_to_db(message):
+    db_logger = logging.getLogger('db')
+    db_logger.exception(message)
