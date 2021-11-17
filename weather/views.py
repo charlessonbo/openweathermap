@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from . import service
 from .forms import WeatherForm
 from django.views import View
+from django.views.generic.list import ListView
+from .models import Location
 
 
 class find_by_map(View):
@@ -33,6 +35,11 @@ class find_by_name(View):
 
         return render(request, self.template, {'form': form, 'result': result})
 
+
+class location_list(ListView):
+    model = Location
+    template_name='weather/locationlist/list.html'
+    paginate_by = 2
 
 def get_weather_by_coordinates(request):
     response = service.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
