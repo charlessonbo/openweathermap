@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'weatherapp.middleware.ExceptionMiddleware', 
 ]
 
 ROOT_URLCONF = 'weatherapp.urls'
@@ -133,5 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 OPEN_WEATHER_MAP_API_KEY = '849777b4516158feb58a9f76ed09d070'
-OPEN_WEATHER_MAP_API = 'http://api.openweathermap.org/data/2.5/weather'
+OPEN_WEATHER_MAP_API = 'https://api.openweathermap.org/data/2.5/weather'
 
