@@ -3,15 +3,15 @@
 {% block content %}
 <div class="row">
   <div class="col-lg-3 tm-md-3 tm-col">
-    {% include "weather/bymaptemplates/weatherforecast.html" %}
+    {% include "weather/weatherforecast.html" %}
   </div>
 
   <div class="col-lg-9 tm-md-9 tm-col">
-    {% include "weather/bymaptemplates/worldmap.html" %}
+    {% include "weather/worldmap.html" %}
   </div>
 </div>
 {% endblock %}
 
 {% block script %}
-  {% include "weather/bymaptemplates/worldmapjs.html" %}
+  {% include "weather/worldmapjs.html" %}
 {% endblock %}

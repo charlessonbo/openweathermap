@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from . import service
 
 def index(request):
-    return render(request, 'weather/bymaptemplates/index.html')
+    return render(request, 'weather/index.html')
 
 
 def get_weather_by_coordinates(request):

@@ -15,7 +15,7 @@ def weather_by_coordinates(latitude,longitude):
 
 def generate_weather_forecast(api_response):
     data = api_response.json()
-    response = { 'data':{} }
+    results = {}
 
     temperature = ((data['main']['temp']) - 273.15)
     weather_description = data['weather'][0]['description']
@@ -24,20 +24,25 @@ def generate_weather_forecast(api_response):
     location_name = data['name']
     date_time = datetime.now().strftime("%b %d %Y | %I:%M:%S %p")
 
-    response['data']['temperature'] = "{:.2f}°C".format(temperature)
-    response['data']['wind'] = f"{wind} kmph"
-    response['data']['humidity'] = f"{humidity}%"
-    response['data']['weather_description'] = str(weather_description).title()
-    response['data']['location_name'] = location_name
-    response['data']['date_time'] = date_time
-    response['message'] = 'success'
-    response['status_code'] = api_response.status_code
-    return response
+    results['temperature'] = "{:.2f}°C".format(temperature)
+    results['wind'] = f"{wind} kmph"
+    results['humidity'] = f"{humidity}%"
+    results['weather_description'] = str(weather_description).title()
+    results['location_name'] = location_name
+    results['date_time'] = date_time
+
+    return generate_api_response(results, 'success', api_response.status_code)
 
 
 def generate_error_message(api_response):
     data = api_response.json()
+    results = {}
+    return generate_api_response(results, data['message'], api_response.status_code)
+
+
+def generate_api_response(results,message,status_code):
     response = {}
-    response['message'] = data['message']
-    response['status_code'] = api_response.status_code
+    response['results'] = results
+    response['message'] = message
+    response['status_code'] = status_code
     return response
