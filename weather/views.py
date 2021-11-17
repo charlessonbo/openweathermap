@@ -24,8 +24,8 @@ class index(View):
 
     def post(self, request):
         result = None
-        form = WeatherForm(request.POST)
         context ={}
+        form = WeatherForm(request.POST)
         context['form']= form
 
         if form.is_valid():
