@@ -1,0 +1,15 @@
+<script>
+    $(document).ready(function() {
+        on_page_load()
+    });
+
+
+    function on_page_load(){
+        $("#find_by_name_nav").removeClass("nav-link").addClass("nav-link active");
+
+
+        $(".form :input").each(function(){
+            $(this).addClass("form-control");
+        });
+    }
+</script>
