@@ -1,0 +1,12 @@
+<div class="card-body p-4">
+  <form action = "{% url 'index' %}"  method = "POST">
+    <div class="form">
+        {% csrf_token %}
+        {{form }}
+    </div>
+    <div class="text-right">
+      <input class="btn btn-primary" type="submit" value="Search">
+    </div>
+  </form> 
+</div>
+

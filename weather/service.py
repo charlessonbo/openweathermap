@@ -14,6 +14,17 @@ def weather_by_coordinates(latitude,longitude):
         return generate_error_message(response)
 
 
+
+def weather_by_name(name):
+    url= f"{settings.OPEN_WEATHER_MAP_API}?q={name}&appid={settings.OPEN_WEATHER_MAP_API_KEY}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        return generate_weather_forecast(response)
+    else:
+        return generate_error_message(response)
+
+
 def generate_weather_forecast(api_response):
     data = api_response.json()
     results = {}

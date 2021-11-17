@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', 
-         views.index, 
+         views.index.as_view(), 
          name='index'),
 
     path('get/location/weather',

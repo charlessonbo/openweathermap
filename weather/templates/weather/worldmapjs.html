@@ -1,7 +1,16 @@
 <script>
     $(document).ready(function() {
         set_world_map()
+        on_page_load()
     });
+
+
+    function on_page_load(){
+        $(".form :input").each(function(){
+            $(this).addClass("form-control");
+        });
+    }
+
 
     function set_world_map(){
         var map = L.map('map').setView([0,0],1)
