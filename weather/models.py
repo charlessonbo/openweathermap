@@ -1,5 +1,5 @@
 from django.db import models
-from . import service
+from .services import weatherservice
 
 
 class Location(models.Model):
@@ -13,7 +13,7 @@ class Location(models.Model):
 
     @property
     def weather_forecast(self):
-        response = service.weather_by_name(self.name)
+        response = weatherservice.weather_by_name(self.name)
         if response['status_code'] == 200:
             result = response["result"]
 
