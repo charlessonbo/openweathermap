@@ -32,7 +32,7 @@
 
     <div class='pagination justify-content-center'>
         {% if page_obj.has_previous %}
-          <a href='{% url "location_list" %}?page={{ page_obj.previous_page_number }}'>Previous </a>
+          <a href='{% url "location_list_page" %}?page={{ page_obj.previous_page_number }}'>Previous </a>
         {% endif %}
     
         <span class='mx-4'>
@@ -40,7 +40,7 @@
         </span>
     
         {% if page_obj.has_next %}
-          <a href='{% url "location_list" %}?page={{ page_obj.next_page_number }}' > Next</a>
+          <a href='{% url "location_list_page" %}?page={{ page_obj.next_page_number }}' > Next</a>
         {% endif %}
       </div>
 {% endblock %}
