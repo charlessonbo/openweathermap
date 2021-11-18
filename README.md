@@ -1,2 +1,7 @@
-# openweathermap
-Django project weather location web application with weather API integration openweathermap.org
+# Weather app
+web based application get weather by location
+
+Technology used:
+- Django framework
+- API integration openweathermap.org
+- leaflet for location map
