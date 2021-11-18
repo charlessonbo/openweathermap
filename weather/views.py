@@ -1,9 +1,8 @@
 from django.shortcuts import render
-import json
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from . import service
+from .services import weatherservice
 from .forms import WeatherForm
 from django.views import View
 from django.views.generic.list import ListView
@@ -29,7 +28,7 @@ class find_by_name(View):
         form = self.form(request.POST)
 
         if form.is_valid():
-            response = service.weather_by_name(form.cleaned_data['location'])
+            response = weatherservice.weather_by_name(form.cleaned_data['location'])
             if response['status_code'] == 200:
                 result= response["result"]
 
@@ -42,5 +41,5 @@ class location_list(ListView):
     paginate_by = 2
 
 def get_weather_by_coordinates(request):
-    response = service.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
+    response = weatherservice.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
     return JsonResponse(response)
