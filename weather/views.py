@@ -9,13 +9,18 @@ from django.views.generic.list import ListView
 from .models import Location
 
 
-class find_by_map(View):
+class find_by_map_page(View):
     template = 'weather/findbymap/index.html'
     def get(self, request):
         return render(request, self.template)
 
 
-class find_by_name(View):
+def find_by_coordinates(request):
+    response = weatherservice.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
+    return JsonResponse(response)
+
+
+class find_by_name_page(View):
     form = WeatherForm
     template = 'weather/findbyname/index.html'
 
@@ -35,11 +40,7 @@ class find_by_name(View):
         return render(request, self.template, {'form': form, 'result': result})
 
 
-class location_list(ListView):
+class location_list_page(ListView):
     model = Location
     template_name='weather/locationlist/list.html'
     paginate_by = 2
-
-def get_weather_by_coordinates(request):
-    response = weatherservice.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
-    return JsonResponse(response)
