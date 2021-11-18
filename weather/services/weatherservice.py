@@ -33,8 +33,8 @@ def generate_weather_forecast(api_response):
     results['wind'] = change_format_wind(data['wind']['speed'])
     results['humidity'] = change_format_humidity(data['main']['humidity'])
 
-    return {
-        "message": 'success',
-        "result": results,
-        "status_code": api_response.status_code
-    }
+    return generate_api_response(
+        message='success',
+        result=results,
+        status_code=api_response.status_code
+    )
