@@ -15,11 +15,6 @@ class find_by_map_page(View):
         return render(request, self.template)
 
 
-def find_by_coordinates(request):
-    response = weatherservice.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
-    return JsonResponse(response)
-
-
 class find_by_name_page(View):
     form = WeatherForm
     template = 'weather/findbyname/index.html'
@@ -35,7 +30,7 @@ class find_by_name_page(View):
         if form.is_valid():
             response = weatherservice.weather_by_name(form.cleaned_data['location'])
             if response['status_code'] == 200:
-                result= response["result"]
+                result = response["result"]
 
         return render(request, self.template, {'form': form, 'result': result})
 
@@ -44,3 +39,8 @@ class location_list_page(ListView):
     model = Location
     template_name='weather/locationlist/list.html'
     paginate_by = 2
+
+
+def find_by_coordinates(request):
+    response = weatherservice.weather_by_coordinates(request.GET['latitude'], request.GET['longitude'])
+    return JsonResponse(response)
