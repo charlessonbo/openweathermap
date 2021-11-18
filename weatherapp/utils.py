@@ -1,5 +1,5 @@
 import logging
-
+from datetime import datetime
 
 def generate_error_api_response(api_response, input_data):
     data = api_response.json()
@@ -16,3 +16,23 @@ def generate_error_api_response(api_response, input_data):
 def create_log_to_db(message):
     db_logger = logging.getLogger('db')
     db_logger.exception(message)
+
+
+def change_format_temperature(temperature):
+    return "{:.2f}°C".format(((temperature) - 273.15))
+
+
+def change_format_to_title(description):
+    return str(description).title()
+
+
+def change_format_wind(wind):
+    return f"{wind} kmph"
+
+
+def change_format_humidity(humidity):
+    return f"{humidity}%"
+
+
+def get_date_now():
+    return datetime.now().strftime("%b %d %Y | %I:%M:%S %p")
