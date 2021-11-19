@@ -41,4 +41,4 @@ Creating location data for location list page
 
 create user by running command in terminal python manage.py createsuperuser
 
-add location in admin page (http://127.0.0.1:8000/admin)
+add location in admin page (example url http://127.0.0.1:8000/admin)
