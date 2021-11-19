@@ -19,7 +19,7 @@ INITIAL SETUP
 
 -To install depedency pip install -r requirements.txt
 
--database setup python manage.py migrate
+-To setup database python manage.py migrate
 
 -to run web application python manage.py runserver
 
