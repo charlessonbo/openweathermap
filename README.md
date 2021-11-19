@@ -11,15 +11,15 @@ Technology used:
 ## INITIAL SETUP
 
 
- running this command in terminal [pip](https://pip.pypa.io/en/stable/) to create a virtual environment.
+ running this command in terminal to create a virtual environment.
 ```bash
 python -m venv venv
 ```
 
- 
-
-
--To go into your virtual environment: venv/bin/activate
+ To go into your virtual environment
+ ```bash
+ venv/bin/activate
+```
 
 -To install depedency pip install -r requirements.txt
 
