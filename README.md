@@ -18,7 +18,7 @@ python -m venv venv
 
 to go into your virtual environment
  ```bash
- venv/bin/activate
+ venv\Scripts\activate
 ```
 
 to install Django packages
