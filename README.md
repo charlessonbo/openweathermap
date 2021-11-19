@@ -11,24 +11,32 @@ Technology used:
 ## INITIAL SETUP
 
 
- running this command in terminal to create a virtual environment.
+running this command in terminal to create a virtual environment.
 ```bash
 python -m venv venv
 ```
 
- To go into your virtual environment
+to go into your virtual environment
  ```bash
  venv/bin/activate
 ```
 
--To install depedency pip install -r requirements.txt
+to install depedency
+ ```bash
+pip install -r requirements.txt
+```
 
--To setup database python manage.py migrate
+to setup database
+ ```bash
+python manage.py migrate
+```
 
--to run web application python manage.py runserver
+to run web application 
+ ```bash
+python manage.py runserver
+```
 
-
-NOTE
+## NOTE
 -creating data for location list page
 create user by running command in terminal python manage.py createsuperuser
 add location in admin page http://127.0.0.1:8000/admin
