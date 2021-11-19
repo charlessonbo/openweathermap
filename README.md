@@ -26,9 +26,14 @@ to install Django packages
 pip install -r requirements.txt
 ```
 
-to setup database if has error db logger run this command first python manage.py makemigrations
+to setup database
  ```bash
 python manage.py migrate
+```
+
+if has error db logger run this command first
+ ```bash
+ python manage.py makemigrations
 ```
 
 to run web application 
