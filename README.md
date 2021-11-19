@@ -8,12 +8,16 @@ Technology used:
 
 
 
+## INITIAL SETUP
 
-INITIAL SETUP
 
- running this command in terminal
+ running this command in terminal [pip](https://pip.pypa.io/en/stable/) to create a virtual environment.
+```bash
+python -m venv venv
+```
+
  
--Create a virtual environment python -m venv venv
+
 
 -To go into your virtual environment: venv/bin/activate
 
