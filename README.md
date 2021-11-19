@@ -37,7 +37,7 @@ python manage.py runserver
 ```
 
 ## NOTE
-Creating data for location list page
+Creating location data for location list page
 
 create user by running command in terminal python manage.py createsuperuser
 
