@@ -21,7 +21,7 @@ to go into your virtual environment
  venv/bin/activate
 ```
 
-to install depedency
+to install Django packages
  ```bash
 pip install -r requirements.txt
 ```
@@ -37,6 +37,8 @@ python manage.py runserver
 ```
 
 ## NOTE
--creating data for location list page
+Creating data for location list page
+
 create user by running command in terminal python manage.py createsuperuser
-add location in admin page http://127.0.0.1:8000/admin
+
+add location in admin page (http://127.0.0.1:8000/admin)
