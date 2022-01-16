@@ -22,9 +22,9 @@ def generate_error_api_response(api_response, input_data):
 
 
 def create_log_to_db(message):
-    db_logger = logging.getLogger('db')
-    db_logger.exception(message)
-
+    # db_logger = logging.getLogger('db')
+    # db_logger.exception(message)
+    pass
 
 def change_format_temperature(temperature):
     return "{:.2f}°C".format(((temperature) - 273.15))

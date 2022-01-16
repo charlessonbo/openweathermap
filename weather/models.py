@@ -13,6 +13,7 @@ class Location(models.Model):
 
     @property
     def weather_forecast(self):
+        result = None
         response = weatherservice.weather_by_name(self.name)
         if response['status_code'] == 200:
             result = response["result"]
