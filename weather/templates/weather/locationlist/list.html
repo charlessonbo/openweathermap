@@ -19,8 +19,12 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1" style="font-size: 1rem;">
-                                    <div><i class="far fa-paper-plane fa-fw"></i> Wind: <span class="ms-1" >{{location.weather_forecast.wind}} </span></div>
-                                    <div><i class="fas fa-tint fa-fw"></i> Humidity: <span class="ms-1" > {{location.weather_forecast.humidity}} </span></div>
+                                    {% if location.weather_forecast.wind  %}
+                                        <div><i class="far fa-paper-plane fa-fw"></i> Wind: <span class="ms-1" >{{location.weather_forecast.wind}} </span></div>
+                                        <div><i class="fas fa-tint fa-fw"></i> Humidity: <span class="ms-1" > {{location.weather_forecast.humidity}} </span></div>
+                                    {% else %}
+                                        <strong>No available data</strong>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

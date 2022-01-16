@@ -18,7 +18,7 @@ python -m venv venv
 
 to go into your virtual environment
  ```bash
- venv/bin/activate
+ venv\Scripts\activate
 ```
 
 to install Django packages
@@ -31,6 +31,11 @@ to setup database
 python manage.py migrate
 ```
 
+if has error db logger run this command first
+ ```bash
+ python manage.py makemigrations
+```
+
 to run web application 
  ```bash
 python manage.py runserver
@@ -41,4 +46,4 @@ Creating location data for location list page
 
 create user by running command in terminal python manage.py createsuperuser
 
-add location in admin page (http://127.0.0.1:8000/admin)
+add location in admin page (example url http://127.0.0.1:8000/admin)
